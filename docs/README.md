@@ -44,7 +44,7 @@
   - [ ] 입력을 Lottos로 반환한다.
     
 - LottoNumberConverter
-  - [ ] inputView로부터 입력 받은 당첨 번호를 Lotto로 변환 후 반환한다.
+  - [  ] inputView로부터 입력 받은 당첨 번호를 Lotto로 변환 후 반환한다.
 
 - outputView
   - [ ] 발행한 로또 수량 및 번호를 출력한다.
@@ -65,4 +65,4 @@
 
 ## Util
 - RandomNumberGenerator
-  - [ ] 랜덤 입력 값을 제공한다.
+  - [ X ] 랜덤 입력 값을 제공한다.
