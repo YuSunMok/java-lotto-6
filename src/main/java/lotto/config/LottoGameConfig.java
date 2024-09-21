@@ -3,7 +3,9 @@ package lotto.config;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-public class LottoConfig {
+public final class LottoGameConfig {
+
+    public static final String LOTTO_NUMBER_INPUT_DELIMITER = ",";
 
     public static int RANDOM_START_NUMBER = 1;
     public static int RANDOM_END_NUMBER = 45;
@@ -22,7 +24,7 @@ public class LottoConfig {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public LottoConfig(InputView inputView, OutputView outputView) {
+    public LottoGameConfig(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
