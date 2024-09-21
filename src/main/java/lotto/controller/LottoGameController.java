@@ -1,20 +1,24 @@
 package lotto.controller;
 
-import lotto.config.LottoConfig;
+import lotto.Model.Money;
+import lotto.config.LottoGameConfig;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-public class LottoController {
+public class LottoGameController {
 
     private final InputView inputView;
     private final OutputView outputView;
 
-    public LottoController(LottoConfig config) {
+    public LottoGameController(LottoGameConfig config) {
         inputView = config.getInputView();
         outputView = config.getOutputView();
     }
 
     public void run() {
+        outputView.showCommentForMoney();
+        Money money = inputView.getMoneyFromUser();
 
+        outputView.showBuyLottoComments(money);
     }
 }

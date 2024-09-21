@@ -10,7 +10,7 @@ public class RandomNumberGenerator {
 
     private final static int startNumber = LottoGameConfig.RANDOM_START_NUMBER;
     private final static int endNumber = LottoGameConfig.RANDOM_END_NUMBER;
-    private final static int lottoCount = LottoGameConfig.LOTTO_NUMBER_COUNT;
+    private final static int lottoCount = LottoGameConfig.LOTTO_SIZE;
 
     public static List<Integer> generateSorted() {
         List<Integer> randomNumbers = getRandomNumbers();
