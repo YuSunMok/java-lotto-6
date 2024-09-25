@@ -37,7 +37,18 @@ class MoneyTest {
         assertThat(availableLottoCount).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("천원 단위만큼 로또를 개수를 생성한다.")
+    void testGetAvailableLottoCount() {
+        Money money = createMoney(8000);
+
+        int count = money.getAvailableLottoCount();
+
+        assertThat(count).isEqualTo(8);
+    }
+
     private static Money createMoney(int money) {
         return Money.of(money);
     }
+
 }
