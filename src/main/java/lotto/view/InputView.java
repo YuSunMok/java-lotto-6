@@ -1,7 +1,10 @@
 package lotto.view;
 
+import lotto.Model.Lotto;
 import lotto.Model.Money;
 import lotto.util.InputUtil;
+
+import java.util.List;
 
 public class InputView {
 
@@ -10,4 +13,11 @@ public class InputView {
         return Money.of(money);
     }
 
+    public Lotto getWinningLottoFromUser() {
+        return Lotto.of(InputUtil.readIntegerList());
+    }
+
+    public int getBonusNumberFromUser() {
+        return InputUtil.readInt();
+    }
 }

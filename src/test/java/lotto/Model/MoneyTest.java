@@ -28,6 +28,7 @@ class MoneyTest {
     }
 
     @Test
+    @DisplayName("1,000원 단위만큼 구매가능한 로또 개수를 반환한다.")
     void getAvailableLottoCount() {
         Money money = createMoney(1000);
 

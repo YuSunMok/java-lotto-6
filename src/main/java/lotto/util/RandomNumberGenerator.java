@@ -2,9 +2,11 @@ package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.config.LottoGameConfig;
+import lotto.exception.LottoException;
+import lotto.exception.LottoGameException;
+import lotto.exception.LottosException;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class RandomNumberGenerator {
 
@@ -13,7 +15,8 @@ public class RandomNumberGenerator {
     private final static int lottoCount = LottoGameConfig.LOTTO_SIZE;
 
     public static List<Integer> generateSorted() {
-        List<Integer> randomNumbers = getRandomNumbers();
+        List<Integer> randomNumbers = new ArrayList<>(getRandomNumbers());
+
         Collections.sort(randomNumbers);
         return randomNumbers;
     }
