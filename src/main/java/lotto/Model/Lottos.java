@@ -38,8 +38,12 @@ public class Lottos {
 
     private static void validateLottos(List<Lotto> lottos) {
         if (lottos == null || lottos.isEmpty()) {
-            throw new LottoGameException(LottosException.INVALID_LOTTOS);
+            throw new LottoGameException(LottosException.LOTTO_TICKETS_REQUIERD);
         }
+    }
+
+    public boolean isInvalid() {
+        return lottos == null || lottos.isEmpty();
     }
 
 }

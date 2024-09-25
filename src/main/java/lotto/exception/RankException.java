@@ -2,7 +2,8 @@ package lotto.exception;
 
 public enum RankException implements CustomException {
 
-    INVALID_RANK("존재하지 않는 등수입니다.")
+    RANK_NOT_FOUND("존재하지 않는 등수입니다."),
+    INVALID_RANK("유효하지 않는 등수입니다."),
     ;
 
     private final String message;
