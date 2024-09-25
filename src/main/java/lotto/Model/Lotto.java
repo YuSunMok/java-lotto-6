@@ -26,7 +26,7 @@ public class Lotto {
     }
 
     public Optional<Rank> compareAt(Lotto lotto, int bonusNumber) {
-        int count = getCountFrom(lotto);
+        int count = compareCountAt(lotto);
         if (count == 0) {
             return Optional.empty();
         }
@@ -41,7 +41,7 @@ public class Lotto {
         return "[" + getLottoNumbers() + "]";
     }
 
-    private int getCountFrom(Lotto lotto) {
+    private int compareCountAt(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::contain)
                 .count();
@@ -63,6 +63,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> randomNumberSet = new HashSet<>(numbers);
+
         if (LottoGameConfig.LOTTO_SIZE != randomNumberSet.size()) {
             throw new LottoGameException(LottoException.DUPLICATED_LOTTO);
         }

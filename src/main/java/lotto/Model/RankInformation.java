@@ -4,6 +4,6 @@ public interface RankInformation {
 
     String getInformation(int count);
 
-    boolean isSameRank(int rank, boolean bonusContain);
+    boolean isSameCount(int count, boolean bonusContain);
 
 }

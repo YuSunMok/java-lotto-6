@@ -41,4 +41,5 @@ public class Lottos {
             throw new LottoGameException(LottosException.INVALID_LOTTOS);
         }
     }
+
 }

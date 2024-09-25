@@ -21,6 +21,7 @@ public class LottoGameController {
 
     public void run() {
         Money money = showCommentForMoney();
+
         Lottos lottos = outputView.showBuyLottoComments(money);
 
         Lotto winningLotto = showCommentForWinningLotto();

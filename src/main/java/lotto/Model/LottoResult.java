@@ -14,6 +14,7 @@ public class LottoResult {
         if (isInValidMap(lottoResultMap)) {
             lottoResultMap = initialize();
         }
+
         return new LottoResult(lottoResultMap);
     }
 
@@ -26,6 +27,7 @@ public class LottoResult {
 
     public List<String> getRankInformation() {
         List<String> list = new ArrayList<>();
+
         for (Rank rank : lottoResultMap.keySet()) {
             int count = lottoResultMap.get(rank);
             list.add(rank.getInformation(count));
@@ -67,4 +69,5 @@ public class LottoResult {
 
         return map;
     }
+
 }

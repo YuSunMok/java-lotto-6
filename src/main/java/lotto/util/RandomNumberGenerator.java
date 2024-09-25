@@ -16,7 +16,6 @@ public class RandomNumberGenerator {
 
     public static List<Integer> generateSorted() {
         List<Integer> randomNumbers = new ArrayList<>(getRandomNumbers());
-
         Collections.sort(randomNumbers);
         return randomNumbers;
     }
