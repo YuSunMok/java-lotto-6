@@ -2,7 +2,7 @@ package lotto.Model;
 
 public interface RankInformation {
 
-    String getInformation(int count);
+    String getDisplayRankInfo(int count);
 
     boolean isSameCount(int count, boolean bonusContain);
 

@@ -1,6 +1,7 @@
 package lotto.Model;
 
 import lotto.exception.LottoGameException;
+import lotto.exception.LottoResultException;
 import lotto.exception.LottosException;
 import lotto.exception.RankException;
 
@@ -11,12 +12,14 @@ public class LottoResult {
     private final Map<Rank, Integer> lottoResultMap;
 
     private LottoResult(Map<Rank, Integer> lottoResultMap) {
-        if (isInValidMap(lottoResultMap)) {
-            this.lottoResultMap = initialize();
-            return;
-        }
+        validateMap(lottoResultMap);
+        this.lottoResultMap = initialize(lottoResultMap);
+    }
 
-        this.lottoResultMap = Collections.unmodifiableMap(new LinkedHashMap<>(lottoResultMap));
+    private void validateMap(Map<Rank, Integer> lottoResultMap) {
+        if (isInValidMap(lottoResultMap)) {
+            throw new LottoGameException(LottoResultException.INVALID_LOTTO_RESULT);
+        }
     }
 
     public static LottoResult of(Map<Rank, Integer> lottoResultMap) {
@@ -24,19 +27,20 @@ public class LottoResult {
     }
 
     public LottoResult reflectAt(Rank rank) {
-        Map<Rank, Integer> map = new LinkedHashMap<>(lottoResultMap);
         validateRank(rank);
-        map.put(rank, map.get(rank) + 1);
+
+        Map<Rank, Integer> map = new LinkedHashMap<>(lottoResultMap);
+        map.put(rank, map.getOrDefault(rank, 0) + 1);
 
         return LottoResult.of(map);
     }
 
-    public List<String> getRankInformation() {
+    public List<String> getLottoResultForDisplay() {
         List<String> list = new ArrayList<>();
 
         for (Rank rank : lottoResultMap.keySet()) {
-            int count = lottoResultMap.get(rank);
-            list.add(rank.getInformation(count));
+            int count = getRankCount(rank);
+            list.add(rank.getDisplayRankInfo(count));
         }
 
         return list;
@@ -44,9 +48,8 @@ public class LottoResult {
 
     public double getRateOfReturn(Lottos lottos) {
         validateLottos(lottos);
-        int sum = lottoResultMap.keySet().stream()
-                .mapToInt(rank -> rank.getTotalAmount(lottoResultMap.get(rank)))
-                .sum();
+        
+        int sum = getSumOfPrice();
 
         int purchasePrice = lottos.getPurchasePrice() ;
 
@@ -66,14 +69,10 @@ public class LottoResult {
         return Objects.hash(lottoResultMap);
     }
 
-    private static boolean isInValidMap(Map<Rank, Integer> lottoResultMap) {
-        return lottoResultMap == null || lottoResultMap.isEmpty();
-    }
-
-    private static Map<Rank, Integer> initialize() {
-        Map<Rank, Integer> map = new LinkedHashMap<>();
+    private static Map<Rank, Integer> initialize(Map<Rank, Integer> lottoResultMap) {
+        Map<Rank, Integer> map = new LinkedHashMap<>(lottoResultMap);
         Arrays.stream(Rank.values())
-                .forEach(rank -> map.put(rank, 0));
+                .forEach(rank -> map.put(rank, map.getOrDefault(rank, 0)));
 
         return map;
     }
@@ -90,8 +89,25 @@ public class LottoResult {
         }
     }
 
+    private boolean isInValidMap(Map<Rank, Integer> lottoResultMap) {
+        return lottoResultMap == null;
+    }
+
     private boolean isLottosInvalid(Lottos lottos) {
         return lottos == null || lottos.isInvalid();
     }
 
+    private int getSumOfPrice() {
+        return lottoResultMap.keySet().stream()
+                .mapToInt(rank -> rank.getTotalAmount(lottoResultMap.get(rank)))
+                .sum();
+    }
+
+    private Integer getRankCount(Rank rank) {
+        return lottoResultMap.get(rank);
+    }
+
+    public Map<Rank, Integer> getLottoResultMap() {
+        return new HashMap<>(lottoResultMap);
+    }
 }

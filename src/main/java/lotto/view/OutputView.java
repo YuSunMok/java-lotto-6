@@ -50,7 +50,7 @@ public class OutputView {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        for (String info : lottoResult.getRankInformation()) {
+        for (String info : lottoResult.getLottoResultForDisplay()) {
             System.out.println(info);
         }
 
