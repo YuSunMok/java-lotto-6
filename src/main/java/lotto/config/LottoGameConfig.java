@@ -41,4 +41,5 @@ public final class LottoGameConfig {
     public OutputView getOutputView() {
         return outputView;
     }
+
 }

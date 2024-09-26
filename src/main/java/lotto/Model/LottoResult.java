@@ -110,4 +110,5 @@ public class LottoResult {
     public Map<Rank, Integer> getLottoResultMap() {
         return new HashMap<>(lottoResultMap);
     }
+
 }

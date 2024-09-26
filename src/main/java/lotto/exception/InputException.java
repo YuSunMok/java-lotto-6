@@ -19,4 +19,5 @@ public enum InputException implements CustomException {
     public String getMessage() {
         return message;
     }
+
 }

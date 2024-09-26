@@ -64,4 +64,5 @@ public class OutputView {
     public void showSimpleMessage(String message) {
         System.out.println(message);
     }
+
 }

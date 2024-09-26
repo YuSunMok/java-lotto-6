@@ -14,6 +14,6 @@ public enum LottosException implements CustomException {
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }

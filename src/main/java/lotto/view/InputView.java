@@ -20,4 +20,5 @@ public class InputView {
     public int getBonusNumberFromUser() {
         return InputUtil.readInt();
     }
+
 }

@@ -15,4 +15,5 @@ public enum LottoResultException implements CustomException {
     public String getMessage() {
         return message;
     }
+
 }

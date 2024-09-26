@@ -62,4 +62,5 @@ public class InputUtil {
         validateHasInput(input);
         return input;
     }
+
 }

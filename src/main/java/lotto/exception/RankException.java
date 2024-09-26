@@ -16,4 +16,5 @@ public enum RankException implements CustomException {
     public String getMessage() {
         return message;
     }
+
 }
